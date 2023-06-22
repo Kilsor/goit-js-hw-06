@@ -5,8 +5,9 @@ const selectors = {
 
 //створюємо подію
 selectors.changeColorButton.addEventListener("click", () => {
-  document.body.style.backgroundColor = getRandomHexColor(); //змінюємо кольори фону елемента <body>
-  selectors.colorSpan.textContent = getRandomHexColor(); //виводимо значення кольору в span.color.
+  const generatedColor = getRandomHexColor();
+  document.body.style.backgroundColor = generatedColor; //змінюємо кольори фону елемента <body>
+  selectors.colorSpan.textContent = generatedColor; //виводимо значення кольору в span.color.
 });
 
 function getRandomHexColor() {

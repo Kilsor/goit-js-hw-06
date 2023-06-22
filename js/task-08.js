@@ -1,23 +1,23 @@
 const selectors = {
-  form: document.querySelector(".login-form"), //знаходимо форму
+  form: document.querySelector(".login-form"), // Знаходимо форму
 };
 
-selectors.form.addEventListener("submit", handleSubmit); //додаємо прослуховувача подій форми
+selectors.form.addEventListener("submit", handleSubmit); // Додаємо прослуховувача подій форми
 
-//створюємо подію
+// Створюємо подію
 function handleSubmit(evt) {
   evt.preventDefault(); // Забороняємо перезавантаження сторінки
 
-  const emailValue = selectors.form.elements.email.value; //присвоюємо email значення з інпуту
-  const passwordValue = selectors.form.elements.password.value; //присвоюємо пароль значення з інпуту
+  const emailValue = selectors.form.elements.email.value.trim(); // Присвоюємо email значення з інпуту та використовуємо метод trim()
+  const passwordValue = selectors.form.elements.password.value.trim(); // Присвоюємо пароль значення з інпуту та використовуємо метод trim()
 
-  //Якщо якесь поле не заповнене виводе alert
+  // Якщо якесь поле не заповнене, виводимо alert
   if (emailValue === "" || passwordValue === "") {
     alert("Будь ласка, заповніть усі поля форми.");
     return;
   }
-  // Збираємо значення полів в об'єкт, де ім'я поля буде ім'ям властивості, а значення поля - значенням властивост
 
+  // Збираємо значення полів в об'єкт, де ім'я поля буде ім'ям властивості, а значення поля - значенням властивості
   const formData = new FormData(evt.currentTarget);
   const data = {};
   formData.forEach((value, key) => {

@@ -7,6 +7,8 @@ const selectors = {
 selectors.input.addEventListener("input", handlerQuery); //додаємо прослуховувача подій інпуту
 
 //створюємо подію для аутпуту
+
 function handlerQuery(evt) {
-  selectors.output.textContent = evt.currentTarget.value; //присвоюємо текстове значення з інпуту
+  const name = evt.currentTarget.value; // Отримуємо значення з інпуту
+  selectors.output.textContent = name ? name : "Anonymous"; // Встановлюємо значення відповідно до умови
 }
