@@ -1,29 +1,28 @@
 const selectors = {
-  form: document.querySelector(".login-form"), // Знаходимо форму
+  form: document.querySelector(".login-form"), // Знаходимо елемент форми за допомогою класу
 };
 
-selectors.form.addEventListener("submit", handleSubmit); // Додаємо прослуховувача подій форми
+selectors.form.addEventListener("submit", handleSubmit); // Додаємо прослуховувач подій на форму
 
-// Створюємо подію
 function handleSubmit(evt) {
-  evt.preventDefault(); // Забороняємо перезавантаження сторінки
+  evt.preventDefault(); // Забороняємо перезавантаження сторінки при відправці форми
 
-  const emailValue = selectors.form.elements.email.value.trim(); // Присвоюємо email значення з інпуту та використовуємо метод trim()
-  const passwordValue = selectors.form.elements.password.value.trim(); // Присвоюємо пароль значення з інпуту та використовуємо метод trim()
+  const emailValue = selectors.form.elements.email.value.trim(); // Отримуємо значення поля email з форми та використовуємо метод trim() для видалення зайвих пробілів
+  const passwordValue = selectors.form.elements.password.value.trim(); // Отримуємо значення поля password з форми та використовуємо метод trim() для видалення зайвих пробілів
 
-  // Якщо якесь поле не заповнене, виводимо alert
   if (emailValue === "" || passwordValue === "") {
+    // Перевіряємо, чи якесь з полів не заповнене
     alert("Будь ласка, заповніть усі поля форми.");
     return;
   }
 
-  // Збираємо значення полів в об'єкт, де ім'я поля буде ім'ям властивості, а значення поля - значенням властивості
-  const formData = new FormData(evt.currentTarget);
+  const formData = new FormData(evt.currentTarget); // Створюємо об'єкт FormData на основі форми
   const data = {};
   formData.forEach((value, key) => {
+    // Проходимося по кожному полю форми і додаємо значення до об'єкта data
     data[key] = value;
   });
 
-  console.log(data);
-  selectors.form.reset();
+  console.log(data); // Виводимо об'єкт зі зібраними даними в консоль
+  selectors.form.reset(); // Очищуємо форму
 }

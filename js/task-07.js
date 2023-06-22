@@ -7,5 +7,6 @@ selectors.fontSizeControl.addEventListener("input", handleFontSizeChange); //д�
 
 //створюємо подію
 function handleFontSizeChange() {
+  // Встановлюємо стиль font-size для елементу спан на основі значення інпуту
   selectors.text.style.fontSize = selectors.fontSizeControl.value + "px";
 }
